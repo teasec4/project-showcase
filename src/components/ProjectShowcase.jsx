@@ -1,0 +1,137 @@
+import React, { useState } from 'react';
+import { projects } from '../data/projects';
+import { Link } from 'react-router-dom';
+
+const ProjectShowcase = () => {
+  const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const currentProject = projects[currentProjectIndex];
+
+  const nextProject = () => {
+    if (isTransitioning) return;
+    setIsTransitioning(true);
+    setCurrentProjectIndex((prev) => 
+      prev === projects.length - 1 ? 0 : prev + 1
+    );
+    setTimeout(() => setIsTransitioning(false), 300);
+  };
+
+  const prevProject = () => {
+    if (isTransitioning) return;
+    setIsTransitioning(true);
+    setCurrentProjectIndex((prev) => 
+      prev === 0 ? projects.length - 1 : prev - 1
+    );
+    setTimeout(() => setIsTransitioning(false), 300);
+  };
+
+  return (
+    <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8 py-2 min-h-screen flex flex-col">
+     <div className="text-center p-6 lg:p-8  max-w-3xl mx-auto transition-opacity duration-300">
+            <h2 className="text-3xl lg:text-4xl font-semibold text-gray-900 mb-4 tracking-tight">{currentProject.title}</h2>
+            <p className="text-lg text-gray-600 leading-relaxed">{currentProject.description}</p>
+      </div>
+      <div className={`grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-8 max-w-7xl mx-auto w-full transition-opacity duration-300 ${isTransitioning ? 'opacity-70' : 'opacity-100'}`}>
+        {/* Left side - project information */}
+        
+          
+
+          <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 lg:p-8">
+            <h3 className="text-xl font-semibold text-gray-900 mb-6">Key Features</h3>
+            <ul className="space-y-4">
+              {currentProject.features.map((feature, index) => (
+                <li key={index} className="flex items-start space-x-3">
+                  <i className="fas fa-check text-green-500 mt-1 flex-shrink-0"></i>
+                  <span className="text-gray-700">{feature}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-8 pt-6 border-t border-gray-100">
+              <a 
+                href={currentProject.githubUrl} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center space-x-2 bg-gray-900 text-white px-6 py-3 rounded-lg font-medium hover:bg-black transition-all duration-200 shadow-sm hover:shadow-md"
+              >
+                <i className="fab fa-github"></i>
+                <span>View on GitHub</span>
+              </a>
+            </div>
+          </div>
+        
+
+        {/* Right side - project screenshot */}
+        <div className="flex items-center justify-center">
+  <div className="w-full max-w-lg flex flex-col items-center">
+    {/* Карточка с оверлеем */}
+    <div className="relative rounded-2xl overflow-hidden border border-gray-200/70 shadow-xl group">
+    <img
+      src={currentProject.imageUrl}
+      alt={`${currentProject.title} – preview`}
+      className="block w-full aspect-[16/10] sm:aspect-[4/3] object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+      loading="lazy"
+      decoding="async"
+      onError={(e) => { e.currentTarget.src = "/images/placeholder.png"; }}
+    />
+
+    {/* gradient overlay */}
+    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+    {/* hover CTA */}
+    <div className="absolute inset-x-4 bottom-4 flex flex-col items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+      <h3 className="text-white text-lg font-semibold drop-shadow">{currentProject.title}</h3>
+      <Link
+        to={`/project/${currentProject.id}`}
+        className="pointer-events-auto inline-flex items-center gap-2 rounded-lg bg-blue-500 px-4 py-2 text-white font-medium hover:bg-blue-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/70"
+      >
+        <span>View Details</span>
+        <i className="fas fa-arrow-right"></i>
+      </Link>
+    </div>
+  </div>
+
+  {/* кнопка под карточкой (для мобилок/тача) */}
+  <div className="mt-4 flex justify-center">
+    <Link
+      to={`/project/${currentProject.id}`}
+      className="inline-flex items-center gap-2 rounded-lg bg-blue-500 px-5 py-2.5 text-white font-medium shadow-sm hover:bg-blue-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/70"
+    >
+      <span>View Project Details</span>
+      <i className="fas fa-arrow-right text-sm"></i>
+    </Link>
+  </div>
+        </div>
+    </div>
+      </div>
+
+      {/* Project navigation */}
+      <div className="flex items-center justify-center space-x-8 max-w-7xl mx-auto w-full">
+        <button 
+          onClick={prevProject} 
+          className="flex items-center space-x-2 text-gray-600 hover:text-gray-900 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+          disabled={currentProjectIndex === 0 || isTransitioning}
+        >
+          <i className="fas fa-chevron-left text-lg"></i>
+          <span className="font-medium">Previous</span>
+        </button>
+
+        <div className="flex items-center space-x-2 text-lg font-semibold text-gray-700">
+          <span className="text-blue-500">{currentProjectIndex + 1}</span>
+          <span className="text-gray-400">/</span>
+          <span className="text-gray-500">{projects.length}</span>
+        </div>
+
+        <button 
+          onClick={nextProject} 
+          className="flex items-center space-x-2 text-gray-600 hover:text-gray-900 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+          disabled={currentProjectIndex === projects.length - 1 || isTransitioning}
+        >
+          <span className="font-medium">Next</span>
+          <i className="fas fa-chevron-right text-lg"></i>
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export default ProjectShowcase;

@@ -1,7 +1,8 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// https://vite.dev/config/
+// заменяй "project-showcase" на название репозитория
 export default defineConfig({
   plugins: [react()],
+  base: '/project-showcase/',
 })

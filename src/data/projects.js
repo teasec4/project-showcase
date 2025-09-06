@@ -15,6 +15,8 @@ export const projects = [
     ],
     githubUrl: "https://github.com/teasec4/crypto-assets",
     imageUrl: `${import.meta.env.BASE_URL}images/project1.png`,
+    iosVersion: "17",
+    isMac: false,
     galleryImages: [
       `${import.meta.env.BASE_URL}images/p1.png`,
       `${import.meta.env.BASE_URL}images/p2.png`,
@@ -38,6 +40,8 @@ export const projects = [
     ],
     githubUrl: "https://github.com/teasec4/URLSessionSwiftDataPractice",
     imageUrl: `${import.meta.env.BASE_URL}images/project2.png`,
+    iosVersion: "16",
+    isMac: false,
     galleryImages: [
       `${import.meta.env.BASE_URL}images/p21.png`,
       `${import.meta.env.BASE_URL}images/p22.png`,
@@ -59,11 +63,38 @@ export const projects = [
     ],
     githubUrl: "https://github.com/yourusername/weather-dashboard",
     imageUrl: `${import.meta.env.BASE_URL}images/project3.png`,
+    iosVersion: "17",
+    isMac: false,
     galleryImages: [
       `${import.meta.env.BASE_URL}images/p31.png`,
       `${import.meta.env.BASE_URL}images/p32.png`,
       `${import.meta.env.BASE_URL}images/p33.png`,
       `${import.meta.env.BASE_URL}images/p34.png`,
+    ],
+  },
+  {
+    id: 4,
+    title: "macOS Task Manager Pro",
+    description:
+      "A native macOS application for advanced task management with system integration. Features include menu bar integration, keyboard shortcuts, time tracking, and seamless sync with iCloud. Built with SwiftUI and AppKit for optimal macOS experience.",
+    technologies: ["SwiftUI", "AppKit", "CloudKit", "Core Data"],
+    features: [
+      "Menu bar integration",
+      "Keyboard shortcuts & hotkeys",
+      "iCloud synchronization",
+      "Time tracking & analytics",
+      "Dark/Light mode support",
+      "Notification Center widgets",
+    ],
+    githubUrl: "https://github.com/yourusername/macos-task-manager",
+    imageUrl: `${import.meta.env.BASE_URL}images/project4.png`,
+    iosVersion: "14",
+    isMac: true,
+    galleryImages: [
+      `${import.meta.env.BASE_URL}images/p41.png`,
+      `${import.meta.env.BASE_URL}images/p42.png`,
+      `${import.meta.env.BASE_URL}images/p43.png`,
+      `${import.meta.env.BASE_URL}images/p44.png`,
     ],
   },
 ];

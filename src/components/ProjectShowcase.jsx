@@ -2,10 +2,42 @@ import React, { useState, useEffect } from 'react';
 import { projects } from '../data/projects';
 import { Link } from 'react-router-dom';
 
+// Скелетон компонент для загрузки картинки
+const ImageSkeleton = () => (
+  <div className="w-full aspect-[16/10] sm:aspect-[4/3] bg-gray-200 rounded-2xl animate-pulse relative overflow-hidden">
+    <div className="absolute inset-0 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 animate-shimmer"></div>
+    <div className="absolute inset-0 flex items-center justify-center">
+      <div className="w-16 h-16 bg-gray-400 rounded-full animate-pulse"></div>
+    </div>
+  </div>
+);
+
+// Компонент для iOS бейджа
+const IOSBadge = ({ version, isMac = false }) => (
+  <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium ${isMac ? 'bg-gray-800 text-white' : 'bg-black text-white'}`}>
+    <i className={`fab ${isMac ? 'fa-apple' : 'fa-apple'} text-white`}></i>
+    <span>{isMac ? 'macOS' : 'iOS'} {version}+</span>
+  </div>
+);
+
 const ProjectShowcase = () => {
   const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [isImageLoading, setIsImageLoading] = useState(true);
   const currentProject = projects[currentProjectIndex];
+
+  // Сброс состояния загрузки при смене проекта
+  useEffect(() => {
+    setIsImageLoading(true);
+  }, [currentProjectIndex]);
+
+  // Предзагрузка следующей картинки для плавного перехода
+  useEffect(() => {
+    const nextIndex = (currentProjectIndex + 1) % projects.length;
+    const nextProject = projects[nextIndex];
+    const img = new Image();
+    img.src = nextProject.imageUrl;
+  }, [currentProjectIndex]);
 
   const nextProject = () => {
     if (isTransitioning) return;
@@ -28,11 +60,13 @@ const ProjectShowcase = () => {
   // Автоматическое переключение слайдов (опционально)
   useEffect(() => {
     const interval = setInterval(() => {
-      nextProject();
+      if (!isTransitioning) {
+        nextProject();
+      }
     }, 8000); // 8 секунд
 
     return () => clearInterval(interval);
-  }, [currentProjectIndex, isTransitioning]);
+  }, [isTransitioning]); // Убрали currentProjectIndex из зависимостей
 
   return (
     <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8 py-2 min-h-screen flex flex-col">
@@ -50,7 +84,10 @@ const ProjectShowcase = () => {
       <div className={`grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-8 max-w-7xl mx-auto w-full transition-opacity duration-300 ${isTransitioning ? 'opacity-50' : 'opacity-100'}`}>
         {/* Left side - project information */}
         <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 lg:p-8 min-h-[520px] flex flex-col">
-          <h3 className="text-xl font-semibold text-gray-900 mb-6">Key Features</h3>
+          <div className="flex items-center justify-between mb-6">
+            <h3 className="text-xl font-semibold text-gray-900">Key Features</h3>
+            <IOSBadge version={currentProject.iosVersion || '18'} isMac={currentProject.isMac} />
+          </div>
           <ul className="space-y-4 flex-grow">
             {currentProject.features.map((feature, index) => (
               <li key={index} className="flex items-start space-x-3">
@@ -77,13 +114,22 @@ const ProjectShowcase = () => {
           <div className="w-full max-w-lg flex flex-col items-center">
             {/* Карточка с оверлеем */}
             <div className="relative rounded-2xl overflow-hidden border border-gray-200/70 shadow-xl group">
+              {isImageLoading && <ImageSkeleton />}
               <img
+                key={`project-${currentProject.id}-${currentProjectIndex}`} // Принудительное обновление при смене проекта
                 src={currentProject.imageUrl}
                 alt={`${currentProject.title} – preview`}
-                className="block w-full aspect-[16/10] sm:aspect-[4/3] object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                loading="lazy"
+                className={`block w-full aspect-[16/10] sm:aspect-[4/3] object-cover transition-all duration-500 group-hover:scale-[1.03] ${isImageLoading ? 'opacity-0 absolute inset-0' : 'opacity-100'}`}
+                loading="eager" // Изменили на eager для более быстрой загрузки
                 decoding="async"
-                onError={(e) => { e.currentTarget.src = "/images/placeholder.png"; }}
+                onLoad={() => {
+                  // Небольшая задержка для плавности анимации
+                  setTimeout(() => setIsImageLoading(false), 100);
+                }}
+                onError={(e) => { 
+                  e.currentTarget.src = "/images/placeholder.png"; 
+                  setTimeout(() => setIsImageLoading(false), 100);
+                }}
               />
 
               {/* gradient overlay */}

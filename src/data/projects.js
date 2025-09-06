@@ -25,7 +25,7 @@ export const projects = [
   {
     id: 2,
     title:
-      "iOS application for exploring and managing a list of countries with capitals, powered by the RestCountries API",
+      "iOS application for exploring and managing a list of countries with capitals",
     description:
       "Users can fetch the list of countries, search by name or capital, sort results (A→Z or Z→A), and mark countries as favorites for quick access in a dedicated tab. All data is persisted locally using SwiftData, so once fetched it stays available offline",
     technologies: ["React", "TypeScript", "Firebase", "Material-UI", "React DnD"],

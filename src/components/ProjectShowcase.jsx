@@ -68,10 +68,11 @@ const ProjectShowcase = () => {
     return () => clearInterval(interval);
   }, [isTransitioning]); // Убрали currentProjectIndex из зависимостей
 
+
   return (
     <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8 py-2 min-h-screen flex flex-col">
       {/* Мобильная версия */}
-      <div className="lg:hidden">
+      <div className="lg:hidden pb-20">
         {/* Заголовок */}
         <div className="text-center p-4 max-w-3xl mx-auto transition-opacity duration-300">
           <h2 className={`text-2xl font-semibold text-gray-900 mb-3 tracking-tight transition-opacity duration-300 ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}>
@@ -170,6 +171,34 @@ const ProjectShowcase = () => {
           </button>
         </div>
       </div>
+
+      {/* Плавающие кнопки навигации для мобильных - всегда видимые */}
+      <div className="lg:hidden fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50">
+        <div className="flex items-center space-x-4 bg-white/90 backdrop-blur-sm rounded-full px-4 py-3 shadow-lg border border-gray-200">
+          <button 
+            onClick={prevProject} 
+            className="flex items-center justify-center w-10 h-10 bg-gray-100 hover:bg-gray-200 rounded-full transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+            disabled={isTransitioning}
+          >
+            <i className="fas fa-chevron-left text-gray-600"></i>
+          </button>
+
+          <div className="flex items-center space-x-2 text-sm font-semibold text-gray-700 bg-gray-100 px-3 py-1 rounded-full">
+            <span className="text-blue-500">{currentProjectIndex + 1}</span>
+            <span className="text-gray-400">/</span>
+            <span className="text-gray-500">{projects.length}</span>
+          </div>
+
+          <button 
+            onClick={nextProject} 
+            className="flex items-center justify-center w-10 h-10 bg-gray-100 hover:bg-gray-200 rounded-full transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+            disabled={isTransitioning}
+          >
+            <i className="fas fa-chevron-right text-gray-600"></i>
+          </button>
+        </div>
+      </div>
+
 
       {/* Десктопная версия */}
       <div className="hidden lg:block">

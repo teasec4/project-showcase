@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -21,12 +22,19 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <h1 className="text-2xl font-semibold text-gray-900 tracking-tight">Kovalev Maksim</h1>
+            <Link to="/" className="text-2xl font-semibold text-gray-900 tracking-tight hover:text-blue-600 transition-colors duration-200">
+              Kovalev Maksim
+            </Link>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-6">
             <div className="flex items-center space-x-4">
+              <Link to="/about" className="flex items-center space-x-2 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 px-3 py-2 rounded-lg transition-all duration-200">
+                <i className="fas fa-user text-gray-500"></i>
+                <span>About</span>
+              </Link>
+              
               <a href="mailto:kovalev_mk@tuta.io" className="flex items-center space-x-2 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 px-3 py-2 rounded-lg transition-all duration-200">
                 <i className="fas fa-envelope text-gray-500"></i>
                 <span>kovalev_mk@tuta.io</span>
@@ -85,6 +93,10 @@ const Navbar = () => {
         {/* Mobile Navigation */}
         <div className={`${isMenuOpen ? 'block' : 'hidden'} md:hidden pb-4`}>
           <div className="space-y-2">
+            <Link to="/about" className="flex items-center space-x-3 px-3 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-all duration-200">
+              <i className="fas fa-user text-gray-500 w-5"></i>
+              <span>About</span>
+            </Link>
             <a href="mailto:kovalev_mk@tuta.io" className="flex items-center space-x-3 px-3 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-all duration-200">
               <i className="fas fa-envelope text-gray-500 w-5"></i>
               <span>kovalev_mk@tuta.io</span>

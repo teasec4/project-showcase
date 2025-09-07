@@ -93,8 +93,7 @@ export const projects = [
     galleryImages: [
       `${import.meta.env.BASE_URL}images/p41.png`,
       `${import.meta.env.BASE_URL}images/p42.png`,
-      `${import.meta.env.BASE_URL}images/p43.png`,
-      `${import.meta.env.BASE_URL}images/p44.png`,
+      `${import.meta.env.BASE_URL}images/p43.png`
     ],
   },
 ];

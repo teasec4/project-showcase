@@ -26,8 +26,36 @@ export const projects = [
   },
   {
     id: 2,
+    title: "JiZhuangApp finance tracking application",
+    description:
+      `Users can create wallets, assign custom colors, add transactions, and categorize expenses with emojis. The app provides a clear dashboard with wallet balances and a detailed view of transactions grouped by month.`,
+    technologies: ["React", "OpenWeather API", "Chart.js", "CSS3", "Axios"],
+    features: [
+      "MVVM Architecture (SwiftUI + Combine)",
+      "SwiftData",
+      "Onboarding flow",
+      "NavigationStack",
+      "Customizable wallet colors",
+      "Lightweight and minimal design"
+    ],
+    githubUrl: "https://github.com/teasec4/JiZhuangAppV1",
+    imageUrl: `${import.meta.env.BASE_URL}images/project3.png`,
+    iosVersion: "17",
+    isMac: false,
+    galleryImages: [
+      `${import.meta.env.BASE_URL}images/p31.png`,
+      `${import.meta.env.BASE_URL}images/p32.png`,
+      `${import.meta.env.BASE_URL}images/p33.png`,
+      `${import.meta.env.BASE_URL}images/p34.png`,
+      `${import.meta.env.BASE_URL}images/p35.png`,
+      `${import.meta.env.BASE_URL}images/p36.png`,
+      `${import.meta.env.BASE_URL}images/p37.png`,
+    ],
+  },
+  {
+    id: 3,
     title:
-      "iOS application for exploring and managing a list of countries with capitals",
+      "Managing a list of countries with capitals (for practice URLSession SwiftData)",
     description:
       "Users can fetch the list of countries, search by name or capital, sort results (A→Z or Z→A), and mark countries as favorites for quick access in a dedicated tab. All data is persisted locally using SwiftData, so once fetched it stays available offline",
     technologies: ["React", "TypeScript", "Firebase", "Material-UI", "React DnD"],
@@ -49,51 +77,32 @@ export const projects = [
       `${import.meta.env.BASE_URL}images/p24.png`,
     ],
   },
-  {
-    id: 3,
-    title: "Water & Steps Tracker",
-    description:
-      "An iOS application for tracking daily water intake and steps, with smart reminders, calendar statistics, and progress summaries. Users can set custom daily goals, log water intake with an animated glass, and monitor weekly achievements in a clean dashboard",
-    technologies: ["React", "OpenWeather API", "Chart.js", "CSS3", "Axios"],
-    features: [
-      "SwiftUI",
-      "SwiftData / AppStorage",
-      "NotificationCenter / UserNotifications",
-      "Combine",
-    ],
-    githubUrl: "https://github.com/yourusername/weather-dashboard",
-    imageUrl: `${import.meta.env.BASE_URL}images/project3.png`,
-    iosVersion: "17",
-    isMac: false,
-    galleryImages: [
-      `${import.meta.env.BASE_URL}images/p31.png`,
-      `${import.meta.env.BASE_URL}images/p32.png`,
-      `${import.meta.env.BASE_URL}images/p33.png`,
-      `${import.meta.env.BASE_URL}images/p34.png`,
-    ],
-  },
+
   {
     id: 4,
     title: "macOS Task Manager Pro",
     description:
-      "A native macOS application for advanced task management with system integration. Features include menu bar integration, keyboard shortcuts, time tracking, and seamless sync with iCloud. Built with SwiftUI and AppKit for optimal macOS experience.",
+      `A lightweight macOS application for managing personal timers and tracking daily activity.
+      Users can create multiple timers, save sessions, and view statistics through a mini-calendar heatmap.
+      Designed with SwiftUI for a clean and minimal user experience.` ,
     technologies: ["SwiftUI", "AppKit", "CloudKit", "Core Data"],
     features: [
-      "Menu bar integration",
-      "Keyboard shortcuts & hotkeys",
-      "iCloud synchronization",
-      "Time tracking & analytics",
-      "Dark/Light mode support",
-      "Notification Center widgets",
+      "Compact mode and full list view",
+      "Save sessions with history tracking",
+      "Mini calendar heatmap for daily stats",
+      "Context menu for duplicate / delete actions",
+      "Modern SwiftUI interface",
     ],
-    githubUrl: "https://github.com/yourusername/macos-task-manager",
+    githubUrl: "https://github.com/teasec4/MacTimerManager",
     imageUrl: `${import.meta.env.BASE_URL}images/project4.png`,
     iosVersion: "14",
     isMac: true,
     galleryImages: [
       `${import.meta.env.BASE_URL}images/p41.png`,
       `${import.meta.env.BASE_URL}images/p42.png`,
-      `${import.meta.env.BASE_URL}images/p43.png`
+      `${import.meta.env.BASE_URL}images/p43.png`,
+      `${import.meta.env.BASE_URL}images/p44.png`,
+      `${import.meta.env.BASE_URL}images/p45.png`
     ],
   },
 ];

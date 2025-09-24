@@ -57,16 +57,16 @@ const ProjectShowcase = () => {
     setTimeout(() => setIsTransitioning(false), 300);
   };
 
-  // Автоматическое переключение слайдов (опционально)
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (!isTransitioning) {
-        nextProject();
-      }
-    }, 15000); // 15 секунд
+  // // Автоматическое переключение слайдов (опционально)
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     if (!isTransitioning) {
+  //       nextProject();
+  //     }
+  //   }, 15000); // 15 секунд
 
-    return () => clearInterval(interval);
-  }, [isTransitioning]); // Убрали currentProjectIndex из зависимостей
+  //   return () => clearInterval(interval);
+  // }, [isTransitioning]); // Убрали currentProjectIndex из зависимостей
 
 
   return (
@@ -106,7 +106,7 @@ const ProjectShowcase = () => {
             </div>
           </div>
           {/* Кнопка подробнее под картинкой */}
-          <div className="mt-3 flex justify-center">
+          {/* <div className="mt-3 flex justify-center">
             <Link
               to={`/project/${currentProject.id}`}
               className="inline-flex items-center gap-2 rounded-lg bg-blue-500 px-4 py-2 text-white font-medium shadow-sm hover:bg-blue-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/70 text-sm transition-all duration-200"
@@ -114,7 +114,7 @@ const ProjectShowcase = () => {
               <span>View Details</span>
               <i className="fas fa-arrow-right text-xs"></i>
             </Link>
-          </div>
+          </div> */}
         </div>
 
         {/* Features */}
@@ -174,6 +174,15 @@ const ProjectShowcase = () => {
 
       {/* Плавающие кнопки навигации для мобильных - всегда видимые */}
       <div className="lg:hidden fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50">
+          <div className="flex flex-col items-center gap-3">
+          <Link
+                      to={`/project/${currentProject.id}`}
+                      className="inline-flex items-center gap-1.5 rounded-md bg-blue-500 px-3 py-1.5 text-sm text-white font-medium shadow-sm hover:bg-blue-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/70"
+                    >
+                      <span>View Project Details</span>
+                      <i className="fas fa-arrow-right text-sm"></i>
+                    </Link>
+          </div>
         <div className="flex items-center space-x-4 bg-white/90 backdrop-blur-sm rounded-full px-4 py-3 shadow-lg border border-gray-200">
           <button 
             onClick={prevProject} 

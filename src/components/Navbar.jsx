@@ -93,7 +93,7 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Navigation */}
-        <div className={`${isMenuOpen ? 'block' : 'hidden'} md:hidden pb-4`}>
+        <div className={`${isMenuOpen ? 'block' : 'hidden'} md:hidden pb-4 `}>
           <div className="space-y-2">
             <Link to="/about" className="flex items-center space-x-3 px-3 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-all duration-200">
               <i className="fas fa-user text-gray-500 w-5"></i>

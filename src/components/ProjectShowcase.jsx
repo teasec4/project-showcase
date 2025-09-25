@@ -86,35 +86,23 @@ const ProjectShowcase = () => {
         {/* Картинка */}
         <div className="mb-4 transition-opacity duration-300">
           <div className="w-full max-w-sm mx-auto">
-            <div className="relative rounded-2xl overflow-hidden border border-gray-200/70 shadow-xl group">
+            <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden border border-gray-200/70 shadow-xl group">
               {isImageLoading && <ImageSkeleton />}
               <img
                 key={`project-${currentProject.id}-${currentProjectIndex}`}
                 src={currentProject.imageUrl}
                 alt={`${currentProject.title} – preview`}
-                className={`block w-full aspect-[4/3] object-cover transition-all duration-500 ${isImageLoading ? 'opacity-0 absolute inset-0' : 'opacity-100'}`}
-                loading="eager"
+                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${isImageLoading ? 'opacity-0' : 'opacity-100'}`}
+                loading="lazy"
                 decoding="async"
-                onLoad={() => {
-                  setTimeout(() => setIsImageLoading(false), 100);
-                }}
+                onLoad={() => setIsImageLoading(false)}
                 onError={(e) => { 
                   e.currentTarget.src = "/images/placeholder.png"; 
-                  setTimeout(() => setIsImageLoading(false), 100);
+                  setIsImageLoading(false);
                 }}
               />
             </div>
           </div>
-          {/* Кнопка подробнее под картинкой */}
-          {/* <div className="mt-3 flex justify-center">
-            <Link
-              to={`/project/${currentProject.id}`}
-              className="inline-flex items-center gap-2 rounded-lg bg-blue-500 px-4 py-2 text-white font-medium shadow-sm hover:bg-blue-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/70 text-sm transition-all duration-200"
-            >
-              <span>View Details</span>
-              <i className="fas fa-arrow-right text-xs"></i>
-            </Link>
-          </div> */}
         </div>
 
         {/* Features */}
@@ -173,26 +161,30 @@ const ProjectShowcase = () => {
       </div>
 
       {/* Плавающие кнопки навигации для мобильных - всегда видимые */}
-      <div className="lg:hidden fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50">
+      <div className="lg:hidden fixed bottom-6  left-1/2 transform -translate-x-1/2 z-50">
           <div className="flex flex-col items-center gap-3">
           <Link
-                      to={`/project/${currentProject.id}`}
-                      className="inline-flex items-center gap-1.5 rounded-md bg-blue-500 px-3 py-1.5 text-sm text-white font-medium shadow-sm hover:bg-blue-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/70"
-                    >
+            to={`/project/${currentProject.id}`}
+            className="inline-flex items-center gap-1.5 rounded-md 
+                       bg-blue-600/90 backdrop-blur-md px-3 py-1.5 text-sm text-white font-medium 
+                       shadow-sm hover:bg-blue-500/50 hover:backdrop-blur-lg 
+                       focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-300/70 
+                       transition-all duration-300"
+          >
                       <span>View Project Details</span>
                       <i className="fas fa-arrow-right text-sm"></i>
                     </Link>
           </div>
-        <div className="flex items-center space-x-4 bg-white/90 backdrop-blur-sm rounded-full px-4 py-3 shadow-lg border border-gray-200">
+        <div className="flex items-center space-x-4 bg-white/30 backdrop-blur-md  rounded-full px-4 py-3 shadow-lg">
           <button 
             onClick={prevProject} 
-            className="flex items-center justify-center w-10 h-10 bg-gray-100 hover:bg-gray-200 rounded-full transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="flex items-center justify-center bg-white/50 backdrop-blur-md w-10 h-10 bg-gray-100 hover:bg-gray-200 rounded-full transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
             disabled={isTransitioning}
           >
             <i className="fas fa-chevron-left text-gray-600"></i>
           </button>
 
-          <div className="flex items-center space-x-2 text-sm font-semibold text-gray-700 bg-gray-100 px-3 py-1 rounded-full">
+          <div className="flex items-center bg-white/70 backdrop-blur-md space-x-2 text-sm font-semibold text-gray-700 bg-gray-100 px-3 py-1 rounded-full">
             <span className="text-blue-500">{currentProjectIndex + 1}</span>
             <span className="text-gray-400">/</span>
             <span className="text-gray-500">{projects.length}</span>
@@ -200,7 +192,7 @@ const ProjectShowcase = () => {
 
           <button 
             onClick={nextProject} 
-            className="flex items-center justify-center w-10 h-10 bg-gray-100 hover:bg-gray-200 rounded-full transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="flex items-center justify-center bg-white/50 backdrop-blur-md w-10 h-10 bg-gray-100 hover:bg-gray-200 rounded-full transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
             disabled={isTransitioning}
           >
             <i className="fas fa-chevron-right text-gray-600"></i>
@@ -216,7 +208,7 @@ const ProjectShowcase = () => {
           <h2 className={`text-3xl lg:text-4xl font-semibold text-gray-900 mb-4 tracking-tight transition-opacity duration-300 ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}>
             {currentProject.title}
           </h2>
-          <p className={`text-lg text-white leading-relaxed transition-opacity duration-300 ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}>
+          <p className={`text-lg text-white/90 leading-relaxed transition-opacity duration-300 ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}>
             {currentProject.description}
           </p>
         </div>
@@ -259,56 +251,37 @@ const ProjectShowcase = () => {
           <div className="flex items-start justify-center min-h-[520px] pt-8">
             <div className="w-full max-w-lg flex flex-col items-center">
               {/* Карточка с оверлеем */}
-              {/* Карточка с оверлеем */}
-              <div className="relative rounded-2xl overflow-hidden 
-                              bg-white/10 backdrop-blur-md 
-                              border border-white/20 shadow-lg 
-                              group transition-all duration-500 hover:bg-white/20">
+              <div className="relative w-full aspect-[16/10] sm:aspect-[4/3] rounded-2xl overflow-hidden bg-white/10 backdrop-blur-md border border-white/20 shadow-lg group transition-all duration-500 hover:bg-white/20">
                 {isImageLoading && <ImageSkeleton />}
                 <img
                   key={`project-${currentProject.id}-${currentProjectIndex}`}
                   src={currentProject.imageUrl}
                   alt={`${currentProject.title} – preview`}
-                  className={`block w-full aspect-[16/10] sm:aspect-[4/3] object-cover transition-all duration-500 group-hover:scale-[1.03] ${isImageLoading ? 'opacity-0 absolute inset-0' : 'opacity-100'}`}
-                  loading="eager"
+                  className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 group-hover:scale-[1.03] ${isImageLoading ? 'opacity-0' : 'opacity-100'}`}
+                  loading="lazy"
                   decoding="async"
-                  onLoad={() => {
-                    setTimeout(() => setIsImageLoading(false), 100);
-                  }}
+                  onLoad={() => setIsImageLoading(false)}
                   onError={(e) => { 
                     e.currentTarget.src = "/images/placeholder.png"; 
-                    setTimeout(() => setIsImageLoading(false), 100);
+                    setIsImageLoading(false);
                   }}
                 />
-
-  {/* gradient overlay — делаем мягче и прозрачнее */}
-  <div className="pointer-events-none absolute inset-0 
-                  bg-gradient-to-t from-black/30 via-black/5 to-transparent 
-                  opacity-0 group-hover:opacity-100 
-                  transition-opacity duration-300" />
-
-  {/* hover CTA */}
-  <div className="absolute inset-x-4 bottom-4 flex flex-col items-center gap-2 
-                  opacity-0 translate-y-6 group-hover:translate-y-0 group-hover:opacity-100 
-                  transition-all duration-500">
-    <h3 className="text-white/90 text-lg font-semibold drop-shadow">
-      {currentProject.title}
-    </h3>
-
-    <Link
-      to={`/project/${currentProject.id}`}
-      className="pointer-events-auto inline-flex items-center gap-2
-                 rounded-lg bg-white/20 backdrop-blur-md px-4 py-2 text-white font-medium
-                 hover:bg-white/30 hover:backdrop-blur-lg
-                 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50 
-                 transition-all duration-300"
-    >
-      <span>View Details</span>
-      <i className="fas fa-arrow-right"></i>
-    </Link>
-  </div>
-</div>
-
+                {/* gradient overlay */}
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/30 via-black/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                {/* hover CTA */}
+                <div className="absolute inset-x-4 bottom-4 flex flex-col items-center gap-2 opacity-0 translate-y-6 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                  <h3 className="text-white/90 text-lg font-semibold drop-shadow">
+                    {currentProject.title}
+                  </h3>
+                  <Link
+                    to={`/project/${currentProject.id}`}
+                    className="pointer-events-auto inline-flex items-center gap-2 rounded-lg bg-white/20 backdrop-blur-md px-4 py-2 text-white font-medium hover:bg-white/30 hover:backdrop-blur-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50 transition-all duration-300"
+                  >
+                    <span>View Details</span>
+                    <i className="fas fa-arrow-right"></i>
+                  </Link>
+                </div>
+              </div>
               {/* кнопка под карточкой (для мобилок/тача) */}
               <div className="mt-4 flex justify-center">
                 <Link

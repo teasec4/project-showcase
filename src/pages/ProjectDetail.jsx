@@ -18,14 +18,18 @@ const ProjectDetail = () => {
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       <div className="mb-6">
-        <Link to="/" className="inline-flex items-center text-gray-600 hover:text-gray-900">
+        <Link to="/" className={`fixed top-20 left-4 md:left-4 lg:left-8 xl:left-16 z-40 
+              inline-flex items-center space-x-2 px-3 py-2 rounded-lg 
+              transition-all duration-300 shadow-sm hover:shadow-md 
+              bg-white/20 backdrop-blur-md text-white 
+              hover:bg-white/30`}>
           <i className="fas fa-arrow-left mr-2"></i>
-          Back
+          
         </Link>
       </div>
 
       <h1 className="text-3xl md:text-4xl font-semibold text-gray-900 tracking-tight mb-4">{project.title}</h1>
-      <p className="text-gray-600 text-lg mb-8">{project.description}</p>
+      <p className="text-white text-lg mb-8">{project.description}</p>
 
       <div className="grid gap-6 md:gap-8">
         {/* Main image */}
@@ -45,7 +49,7 @@ const ProjectDetail = () => {
             <h2 className="text-xl font-semibold text-gray-900 mb-4">More screenshots</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {project.galleryImages.map((src, idx) => (
-                <div key={idx} className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden group">
+                <div key={idx} className="backdrop-blur-md  rounded-xl shadow-lg border border-gray-100 overflow-hidden group">
                   <img src={src} alt={`${project.title} screenshot ${idx+1}`} className="w-full max-h-[700px] bg-gray-50 object-contain transition-transform duration-300 group-hover:scale-105" />
                 </div>
               ))}

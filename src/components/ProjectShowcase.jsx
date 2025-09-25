@@ -78,7 +78,7 @@ const ProjectShowcase = () => {
           <h2 className={`text-2xl font-semibold text-gray-900 mb-3 tracking-tight transition-opacity duration-300 ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}>
             {currentProject.title}
           </h2>
-          <p className={`text-base text-gray-600 leading-relaxed transition-opacity duration-300 ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}>
+          <p className={`text-base text-white leading-relaxed transition-opacity duration-300 ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}>
             {currentProject.description}
           </p>
         </div>
@@ -118,7 +118,7 @@ const ProjectShowcase = () => {
         </div>
 
         {/* Features */}
-        <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-4 mb-6 transition-opacity duration-300">
+        <div className="backdrop-blur-md  rounded-2xl shadow-lg  p-4 mb-6 transition-opacity duration-300">
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-lg font-semibold text-gray-900">Key Features</h3>
             <IOSBadge version={currentProject.iosVersion || '18'} isMac={currentProject.isMac} />
@@ -127,7 +127,7 @@ const ProjectShowcase = () => {
             {currentProject.features.map((feature, index) => (
               <li key={index} className="flex items-start space-x-3">
                 <i className="fas fa-check text-green-500 mt-1 flex-shrink-0 text-sm"></i>
-                <span className="text-gray-700 text-sm">{feature}</span>
+                <span className="text-white text-sm">{feature}</span>
               </li>
             ))}
           </ul>
@@ -216,7 +216,7 @@ const ProjectShowcase = () => {
           <h2 className={`text-3xl lg:text-4xl font-semibold text-gray-900 mb-4 tracking-tight transition-opacity duration-300 ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}>
             {currentProject.title}
           </h2>
-          <p className={`text-lg text-gray-600 leading-relaxed transition-opacity duration-300 ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}>
+          <p className={`text-lg text-white leading-relaxed transition-opacity duration-300 ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}>
             {currentProject.description}
           </p>
         </div>
@@ -224,29 +224,34 @@ const ProjectShowcase = () => {
         {/* Основной контент с фиксированной высотой */}
         <div className={`grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-8 max-w-7xl mx-auto w-full transition-opacity duration-300 ${isTransitioning ? 'opacity-50' : 'opacity-100'}`}>
           {/* Left side - project information */}
-          <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 lg:p-8 min-h-[520px] flex flex-col">
+          <div className="p-6 rounded-xl shadow-lg 
+  bg-black/30 backdrop-blur-md 
+  hover:bg-black/80 text-white transition duration-300 p-6 lg:p-8 min-h-[520px] flex flex-col">
             <div className="flex items-center justify-between mb-6">
-              <h3 className="text-xl font-semibold text-gray-900">Key Features</h3>
+              <h3 className="text-xl font-semibold text-white">Key Features</h3>
               <IOSBadge version={currentProject.iosVersion || '18'} isMac={currentProject.isMac} />
             </div>
             <ul className="space-y-4 flex-grow">
               {currentProject.features.map((feature, index) => (
                 <li key={index} className="flex items-start space-x-3">
                   <i className="fas fa-check text-green-500 mt-1 flex-shrink-0"></i>
-                  <span className="text-gray-700">{feature}</span>
+                  <span className="text-white">{feature}</span>
                 </li>
               ))}
             </ul>
-            <div className="mt-8 pt-6 border-t border-gray-100">
-              <a 
-                href={currentProject.githubUrl} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-flex items-center space-x-2 bg-gray-900 text-white px-6 py-3 rounded-lg font-medium hover:bg-black transition-all duration-200 shadow-sm hover:shadow-md"
-              >
-                <i className="fab fa-github"></i>
-                <span>View on GitHub</span>
-              </a>
+            <div className="mt-8 pt-6 border-t border-white-100">
+            <a
+              href={currentProject.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center space-x-2 
+                        bg-blue-600 text-white px-6 py-3 rounded-lg font-medium 
+                        hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 
+                        transition-all duration-200 shadow-md hover:shadow-lg"
+            >
+              <i className="fab fa-github"></i>
+              <span>View on GitHub</span>
+            </a>
             </div>
           </div>
 
@@ -254,7 +259,11 @@ const ProjectShowcase = () => {
           <div className="flex items-start justify-center min-h-[520px] pt-8">
             <div className="w-full max-w-lg flex flex-col items-center">
               {/* Карточка с оверлеем */}
-              <div className="relative rounded-2xl overflow-hidden border border-gray-200/70 shadow-xl group">
+              {/* Карточка с оверлеем */}
+              <div className="relative rounded-2xl overflow-hidden 
+                              bg-white/10 backdrop-blur-md 
+                              border border-white/20 shadow-lg 
+                              group transition-all duration-500 hover:bg-white/20">
                 {isImageLoading && <ImageSkeleton />}
                 <img
                   key={`project-${currentProject.id}-${currentProjectIndex}`}
@@ -272,21 +281,33 @@ const ProjectShowcase = () => {
                   }}
                 />
 
-                {/* gradient overlay */}
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+  {/* gradient overlay — делаем мягче и прозрачнее */}
+  <div className="pointer-events-none absolute inset-0 
+                  bg-gradient-to-t from-black/30 via-black/5 to-transparent 
+                  opacity-0 group-hover:opacity-100 
+                  transition-opacity duration-300" />
 
-                {/* hover CTA */}
-                <div className="absolute inset-x-4 bottom-4 flex flex-col items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <h3 className="text-white text-lg font-semibold drop-shadow">{currentProject.title}</h3>
-                  <Link
-                    to={`/project/${currentProject.id}`}
-                    className="pointer-events-auto inline-flex items-center gap-2 rounded-lg bg-blue-500 px-4 py-2 text-white font-medium hover:bg-blue-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/70"
-                  >
-                    <span>View Details</span>
-                    <i className="fas fa-arrow-right"></i>
-                  </Link>
-                </div>
-              </div>
+  {/* hover CTA */}
+  <div className="absolute inset-x-4 bottom-4 flex flex-col items-center gap-2 
+                  opacity-0 translate-y-6 group-hover:translate-y-0 group-hover:opacity-100 
+                  transition-all duration-500">
+    <h3 className="text-white/90 text-lg font-semibold drop-shadow">
+      {currentProject.title}
+    </h3>
+
+    <Link
+      to={`/project/${currentProject.id}`}
+      className="pointer-events-auto inline-flex items-center gap-2
+                 rounded-lg bg-white/20 backdrop-blur-md px-4 py-2 text-white font-medium
+                 hover:bg-white/30 hover:backdrop-blur-lg
+                 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50 
+                 transition-all duration-300"
+    >
+      <span>View Details</span>
+      <i className="fas fa-arrow-right"></i>
+    </Link>
+  </div>
+</div>
 
               {/* кнопка под карточкой (для мобилок/тача) */}
               <div className="mt-4 flex justify-center">
@@ -304,24 +325,30 @@ const ProjectShowcase = () => {
 
         {/* Project navigation */}
         <div className="flex items-center justify-center space-x-8 max-w-7xl mx-auto w-full">
-          <button 
-            onClick={prevProject} 
-            className="flex items-center space-x-2 text-gray-600 hover:text-gray-900 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+          <button
+            onClick={prevProject}
+            className="flex items-center space-x-2 px-4 py-2 rounded-full 
+             bg-white/20 backdrop-blur-md text-white 
+             hover:bg-white/30 hover:text-blue-400 
+             transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-md"
             disabled={isTransitioning}
           >
             <i className="fas fa-chevron-left text-lg"></i>
             <span className="font-medium">Previous</span>
           </button>
 
-          <div className="flex items-center space-x-2 text-lg font-semibold text-gray-700">
-            <span className="text-blue-500">{currentProjectIndex + 1}</span>
-            <span className="text-gray-400">/</span>
-            <span className="text-gray-500">{projects.length}</span>
+          <div className="flex items-center space-x-2 text-lg font-semibold bg-white/10 backdrop-blur-md text-white px-3 py-1 rounded-full shadow">
+            <span className="text-blue-400">{currentProjectIndex + 1}</span>
+            <span className="text-white/60">/</span>
+            <span className="text-blue-200">{projects.length}</span>
           </div>
 
-          <button 
-            onClick={nextProject} 
-            className="flex items-center space-x-2 text-gray-600 hover:text-gray-900 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+          <button
+            onClick={nextProject}
+            className="flex items-center space-x-2 px-4 py-2 rounded-full 
+             bg-white/20 backdrop-blur-md text-white 
+             hover:bg-white/30 hover:text-blue-400 
+             transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-md"
             disabled={isTransitioning}
           >
             <span className="font-medium">Next</span>

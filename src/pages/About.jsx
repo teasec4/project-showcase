@@ -70,13 +70,11 @@ const About = () => {
       {/* Projects Button - Adaptive Position */}
       <Link 
         to="/" 
-        className={`fixed top-20 left-4 md:left-4 lg:left-8 xl:left-16 z-40 inline-flex items-center space-x-2 px-3 py-2 rounded-lg transition-all duration-300 shadow-sm hover:shadow-md backdrop-blur-sm ${
-          isMobileMenuOpen ? 'hidden' : 'block'
-        } ${
-          isScrolled 
-            ? 'bg-blue-500 text-white hover:bg-blue-600 md:bg-transparent md:text-gray-500 md:hover:text-gray-700 md:hover:bg-white/80' 
-            : 'text-gray-500 hover:text-gray-700 hover:bg-white/80'
-        }`}
+        className={`fixed top-20 left-4 md:left-4 lg:left-8 xl:left-16 z-40 
+              inline-flex items-center space-x-2 px-3 py-2 rounded-lg 
+              transition-all duration-300 shadow-sm hover:shadow-md 
+              bg-white/20 backdrop-blur-md text-white hover:bg-white/30 
+              ${isMobileMenuOpen ? 'hidden' : 'block'}`}
       >
         <i className="fas fa-arrow-left text-sm"></i>
         <span className="font-medium text-sm">Projects</span>
@@ -93,7 +91,7 @@ const About = () => {
             />
           </div>
         <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">Maksim Kovalev</h1>
-        <p className="text-xl text-gray-600 mb-6">iOS & macOS Developer</p>
+        <p className="text-xl text-white mb-6">iOS & macOS Developer</p>
         <div className="flex justify-center space-x-4">
           <a 
             href="mailto:kovalev_mk@tuta.io" 
@@ -117,17 +115,19 @@ const About = () => {
       {/* About Section */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
         {/* About Me */}
-        <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-8">
+        <div className="rounded-2xl shadow-lg border border-white/20 
+                bg-white/10 backdrop-blur-md 
+                hover:bg-white/20 transition-all duration-300 p-8 text-white">
           <h2 className="text-2xl font-semibold text-gray-900 mb-6 flex items-center">
             <i className="fas fa-user text-blue-500 mr-3"></i>
             About Me
           </h2>
-          <p className="text-gray-700 leading-relaxed mb-4">
+          <p className="text-white leading-relaxed mb-4">
             Passionate iOS and macOS developer with a strong focus on creating intuitive, 
             user-friendly applications. I specialize in SwiftUI, SwiftData, and modern 
             Apple development frameworks.
           </p>
-          <p className="text-gray-700 leading-relaxed">
+          <p className="text-white leading-relaxed">
             With experience in both mobile and desktop development, I enjoy building 
             applications that seamlessly integrate with the Apple ecosystem and provide 
             exceptional user experiences.
@@ -135,7 +135,9 @@ const About = () => {
         </div>
 
         {/* Experience */}
-        <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-8">
+        <div className="rounded-2xl shadow-lg border border-white/20 
+                bg-white/10 backdrop-blur-md 
+                hover:bg-white/20 transition-all duration-300 p-8 text-white">
           <h2 className="text-2xl font-semibold text-gray-900 mb-6 flex items-center">
             <i className="fas fa-briefcase text-green-500 mr-3"></i>
             Experience
@@ -143,15 +145,15 @@ const About = () => {
           <div className="space-y-4">
             <div className="border-l-4 border-blue-500 pl-4">
               <h3 className="font-semibold text-gray-900">iOS Developer</h3>
-              <p className="text-gray-600 text-sm">2023 - Present</p>
-              <p className="text-gray-700 text-sm mt-1">
+              <p className="text-white text-sm">2023 - Present</p>
+              <p className="text-white text-sm mt-1">
                 Developing native iOS applications using SwiftUI, SwiftData, and modern Apple frameworks.
               </p>
             </div>
             <div className="border-l-4 border-green-500 pl-4">
               <h3 className="font-semibold text-gray-900">macOS Developer</h3>
-              <p className="text-gray-600 text-sm">2023 - Present</p>
-              <p className="text-gray-700 text-sm mt-1">
+              <p className="text-white text-sm">2023 - Present</p>
+              <p className="text-white text-sm mt-1">
                 Creating desktop applications with AppKit integration and system-level features.
               </p>
             </div>
@@ -162,7 +164,9 @@ const About = () => {
       {/* Skills & Interests */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
         {/* Technical Skills */}
-        <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-8">
+        <div className="rounded-2xl shadow-lg border border-white/20 
+                bg-white/10 backdrop-blur-md 
+                hover:bg-white/20 transition-all duration-300 p-8 text-white">
           <h2 className="text-2xl font-semibold text-gray-900 mb-6 flex items-center">
             <i className="fas fa-code text-purple-500 mr-3"></i>
             Technical Skills
@@ -202,7 +206,9 @@ const About = () => {
         </div>
 
         {/* Interests */}
-        <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-8">
+        <div className="rounded-2xl shadow-lg border border-white/20 
+                bg-white/10 backdrop-blur-md 
+                hover:bg-white/20 transition-all duration-300 p-8 text-white">
           <h2 className="text-2xl font-semibold text-gray-900 mb-6 flex items-center">
             <i className="fas fa-heart text-red-500 mr-3"></i>
             Interests
@@ -210,36 +216,38 @@ const About = () => {
           <div className="space-y-4">
             <div className="flex items-center space-x-3">
               <i className="fas fa-mobile-alt text-blue-500"></i>
-              <span className="text-gray-700">Mobile App Development</span>
+              <span className="text-white">Mobile App Development</span>
             </div>
             <div className="flex items-center space-x-3">
               <i className="fas fa-desktop text-green-500"></i>
-              <span className="text-gray-700">Desktop Applications</span>
+              <span className="text-white">Desktop Applications</span>
             </div>
             <div className="flex items-center space-x-3">
               <i className="fas fa-palette text-purple-500"></i>
-              <span className="text-gray-700">UI/UX Design</span>
+              <span className="text-white">UI/UX Design</span>
             </div>
             <div className="flex items-center space-x-3">
               <i className="fas fa-chart-line text-orange-500"></i>
-              <span className="text-gray-700">Data Visualization</span>
+              <span className="text-white">Data Visualization</span>
             </div>
             <div className="flex items-center space-x-3">
               <i className="fas fa-cogs text-gray-500"></i>
-              <span className="text-gray-700">System Integration</span>
+              <span className="text-white">System Integration</span>
             </div>
             <div className="flex items-center space-x-3">
               <i className="fas fa-rocket text-pink-500"></i>
-              <span className="text-gray-700">Innovation & Technology</span>
+              <span className="text-white">Innovation & Technology</span>
             </div>
           </div>
         </div>
       </div>
 
       {/* Philosophy */}
-      <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-8 text-center">
+      <div className="rounded-2xl shadow-lg border border-white/20 
+                bg-white/10 backdrop-blur-md 
+                hover:bg-white/20 transition-all duration-300 p-8 text-white text-center">
         <h2 className="text-2xl font-semibold text-gray-900 mb-4">Development Philosophy</h2>
-        <p className="text-lg text-gray-700 leading-relaxed max-w-3xl mx-auto">
+        <p className="text-lg text- leading-relaxed max-w-3xl mx-auto">
           "I believe in creating applications that not only function flawlessly but also provide 
           delightful user experiences. Every line of code should serve a purpose, and every 
           feature should enhance the user's workflow."

@@ -6,13 +6,15 @@ import ProjectDetail from "./pages/ProjectDetail";
 import About from "./pages/About";
 import "./App.css";
 import ScrollToTop from "./components/ScrollToTop";
+import VideoBackground from "./components/VideoBackground";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App relative">
+      <VideoBackground />
       <Navbar />
       <ScrollToTop />
-      <main className="main-content">
+      <main className="main-content relative z-10">
         <Routes>
           <Route path="/" element={<ProjectShowcase />} />
           <Route path="/about" element={<About />} />

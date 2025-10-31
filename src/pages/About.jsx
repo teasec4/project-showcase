@@ -82,16 +82,9 @@ const About = () => {
       
       {/* Hero Section */}
       <div className="text-center mb-12">
-          <div className="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-gray-200 shadow-lg">
-            <img 
-              src={`${import.meta.env.BASE_URL}images/profile.png`} 
-              alt="Maksim Kovalev"
-              className="w-full h-full object-cover"
-              onError={(e) => { e.currentTarget.src = `${import.meta.env.BASE_URL}images/placeholder.png`; }}
-            />
-          </div>
+          
         <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">Maksim Kovalev</h1>
-        <p className="text-xl text-white mb-6">iOS & macOS Developer</p>
+        <p className="text-xl text-white mb-6">Mobile Developer</p>
         <div className="flex justify-center space-x-4">
           <a 
             href="mailto:kovalev_mk@tuta.io" 
@@ -123,14 +116,15 @@ const About = () => {
             About Me
           </h2>
           <p className="text-white leading-relaxed mb-4">
-            Passionate iOS and macOS developer with a strong focus on creating intuitive, 
-            user-friendly applications. I specialize in SwiftUI, SwiftData, and modern 
-            Apple development frameworks.
+          I’m a 29-year-old iOS & Flutter developer living in China, passionate about building smooth, thoughtful mobile experiences.
+I have a background in Electrical Engineering.
+After working several years in international trade and project coordination, I shifted to app development — where I combine logic, design, and creativity.
+
+
           </p>
           <p className="text-white leading-relaxed">
-            With experience in both mobile and desktop development, I enjoy building 
-            applications that seamlessly integrate with the Apple ecosystem and provide 
-            exceptional user experiences.
+          I’ve built apps using Swift, SwiftUI, Flutter, Dart, and Firebase, focusing on UI/UX design, data management, and smart notifications.
+          Curious by nature, I love learning new technologies, writing clean code, and turning small ideas into something people actually enjoy using.
           </p>
         </div>
 
@@ -145,16 +139,23 @@ const About = () => {
           <div className="space-y-4">
             <div className="border-l-4 border-blue-500 pl-4">
               <h3 className="font-semibold text-gray-900">iOS Developer</h3>
-              <p className="text-white text-sm">2023 - Present</p>
+              <p className="text-white text-sm">2025 - Present</p>
               <p className="text-white text-sm mt-1">
-                Developing native iOS applications using SwiftUI, SwiftData, and modern Apple frameworks.
+                Developing native iOS applications using SwiftUI and modern Apple frameworks.
               </p>
             </div>
             <div className="border-l-4 border-green-500 pl-4">
-              <h3 className="font-semibold text-gray-900">macOS Developer</h3>
-              <p className="text-white text-sm">2023 - Present</p>
+              <h3 className="font-semibold text-gray-900">Flutter Developer</h3>
+              <p className="text-white text-sm">2025 - Present</p>
               <p className="text-white text-sm mt-1">
-                Creating desktop applications with AppKit integration and system-level features.
+                Creating mobile applications using Flutter and Dart.
+              </p>
+            </div>
+            <div className="border-l-4 border-red-500 pl-4">
+              <h3 className="font-semibold text-gray-900">Procurment Manager / Sourcing</h3>
+              <p className="text-white text-sm">2022 - 2025</p>
+              <p className="text-white text-sm mt-1">
+                Working at International Trading Company as a Procurment Manager / Sourcing.
               </p>
             </div>
           </div>
@@ -175,7 +176,7 @@ const About = () => {
             <div>
               <h3 className="font-semibold text-gray-900 mb-2">iOS Development</h3>
               <div className="flex flex-wrap gap-2">
-                {['SwiftUI', 'SwiftData', 'Combine', 'URLSession', 'Core Data', 'UserNotifications'].map((skill) => (
+                {['Swift', 'SwiftUI', 'Combine', 'URLSession', 'Core Data', 'UserNotifications', 'Alamofire', 'Firebase'].map((skill) => (
                   <span key={skill} className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
                     {skill}
                   </span>
@@ -183,9 +184,9 @@ const About = () => {
               </div>
             </div>
             <div>
-              <h3 className="font-semibold text-gray-900 mb-2">macOS Development</h3>
+              <h3 className="font-semibold text-gray-900 mb-2">Flutter Development</h3>
               <div className="flex flex-wrap gap-2">
-                {['AppKit', 'SwiftUI', 'CloudKit', 'Menu Bar Integration', 'Keyboard Shortcuts'].map((skill) => (
+                {['Dart', 'Flutter', 'Riverpod', 'GetIt', 'GoRouter', 'Async/Await', 'Hive', 'Supabase'].map((skill) => (
                   <span key={skill} className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
                     {skill}
                   </span>
@@ -195,7 +196,7 @@ const About = () => {
             <div>
               <h3 className="font-semibold text-gray-900 mb-2">Other Technologies</h3>
               <div className="flex flex-wrap gap-2">
-                {['React', 'JavaScript', 'Git', 'Xcode', 'Figma'].map((skill) => (
+                {['React', 'TypeScript', 'Git', 'Xcode', 'Figma'].map((skill) => (
                   <span key={skill} className="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm font-medium">
                     {skill}
                   </span>
@@ -228,12 +229,9 @@ const About = () => {
             </div>
             <div className="flex items-center space-x-3">
               <i className="fas fa-chart-line text-orange-500"></i>
-              <span className="text-white">Data Visualization</span>
+              <span className="text-white">Crypto</span>
             </div>
-            <div className="flex items-center space-x-3">
-              <i className="fas fa-cogs text-gray-500"></i>
-              <span className="text-white">System Integration</span>
-            </div>
+           
             <div className="flex items-center space-x-3">
               <i className="fas fa-rocket text-pink-500"></i>
               <span className="text-white">Innovation & Technology</span>
@@ -242,17 +240,6 @@ const About = () => {
         </div>
       </div>
 
-      {/* Philosophy */}
-      <div className="rounded-2xl shadow-lg border border-white/20 
-                bg-white/10 backdrop-blur-md 
-                hover:bg-white/20 transition-all duration-300 p-8 text-white text-center">
-        <h2 className="text-2xl font-semibold text-gray-900 mb-4">Development Philosophy</h2>
-        <p className="text-lg text- leading-relaxed max-w-3xl mx-auto">
-          "I believe in creating applications that not only function flawlessly but also provide 
-          delightful user experiences. Every line of code should serve a purpose, and every 
-          feature should enhance the user's workflow."
-        </p>
-      </div>
     </div>
   );
 };

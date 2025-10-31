@@ -57,17 +57,6 @@ const ProjectShowcase = () => {
     setTimeout(() => setIsTransitioning(false), 300);
   };
 
-  // // Автоматическое переключение слайдов (опционально)
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     if (!isTransitioning) {
-  //       nextProject();
-  //     }
-  //   }, 15000); // 15 секунд
-
-  //   return () => clearInterval(interval);
-  // }, [isTransitioning]); // Убрали currentProjectIndex из зависимостей
-
 
   return (
     <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8 py-2 min-h-screen flex flex-col">
@@ -217,8 +206,8 @@ const ProjectShowcase = () => {
         <div className={`grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-8 max-w-7xl mx-auto w-full transition-opacity duration-300 ${isTransitioning ? 'opacity-50' : 'opacity-100'}`}>
           {/* Left side - project information */}
           <div className="p-6 rounded-xl shadow-lg 
-  bg-black/30 backdrop-blur-md 
-  hover:bg-black/80 text-white transition duration-300 p-6 lg:p-8 min-h-[520px] flex flex-col">
+              bg-black/30 backdrop-blur-md 
+              hover:bg-black/80 text-white transition duration-300 p-6 lg:p-8 min-h-[520px] flex flex-col">
             <div className="flex items-center justify-between mb-6">
               <h3 className="text-xl font-semibold text-white">Key Features</h3>
               <IOSBadge version={currentProject.iosVersion || '18'} isMac={currentProject.isMac} />

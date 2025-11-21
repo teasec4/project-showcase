@@ -77,10 +77,10 @@ const ProjectShowcase = () => {
           <div className="w-full max-w-sm mx-auto">
             <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden border border-gray-200/70 shadow-xl group">
               {isImageLoading && <ImageSkeleton />}
-              <img
-                key={`project-${currentProject.id}-${currentProjectIndex}`}
-                src={currentProject.imageUrl}
-                alt={`${currentProject.title} – preview`}
+                <img
+                  key={`project-${currentProject.id}-${currentProjectIndex}`}
+                  src={currentProject.imageUrl}
+                  alt={`${currentProject.title} - Project preview screenshot`}
                 className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${isImageLoading ? 'opacity-0' : 'opacity-100'}`}
                 loading="lazy"
                 decoding="async"
@@ -124,13 +124,14 @@ const ProjectShowcase = () => {
         {/* Navigation - подняли выше */}
         <div className="flex items-center justify-center space-x-6 mb-8">
           <button 
-            onClick={prevProject} 
-            className="flex items-center space-x-2 text-gray-600 hover:text-gray-900 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
-            disabled={isTransitioning}
-          >
-            <i className="fas fa-chevron-left"></i>
-            <span className="font-medium text-sm">Previous</span>
-          </button>
+             onClick={prevProject} 
+             className="flex items-center space-x-2 text-gray-600 hover:text-gray-900 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+             disabled={isTransitioning}
+             aria-label="View previous project"
+           >
+             <i className="fas fa-chevron-left" aria-hidden="true"></i>
+             <span className="font-medium text-sm">Previous</span>
+           </button>
 
           <div className="flex items-center space-x-2 text-base font-semibold text-gray-700">
             <span className="text-blue-500">{currentProjectIndex + 1}</span>
@@ -142,9 +143,10 @@ const ProjectShowcase = () => {
             onClick={nextProject} 
             className="flex items-center space-x-2 text-gray-600 hover:text-gray-900 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
             disabled={isTransitioning}
+            aria-label="View next project"
           >
             <span className="font-medium text-sm">Next</span>
-            <i className="fas fa-chevron-right"></i>
+            <i className="fas fa-chevron-right" aria-hidden="true"></i>
           </button>
         </div>
       </div>
@@ -166,12 +168,13 @@ const ProjectShowcase = () => {
           </div>
         <div className="flex items-center space-x-4 bg-white/30 backdrop-blur-md  rounded-full px-4 py-3 shadow-lg">
           <button 
-            onClick={prevProject} 
-            className="flex items-center justify-center bg-white/50 backdrop-blur-md w-10 h-10 bg-gray-100 hover:bg-gray-200 rounded-full transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
-            disabled={isTransitioning}
-          >
-            <i className="fas fa-chevron-left text-gray-600"></i>
-          </button>
+             onClick={prevProject} 
+             className="flex items-center justify-center bg-white/50 backdrop-blur-md w-10 h-10 bg-gray-100 hover:bg-gray-200 rounded-full transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+             disabled={isTransitioning}
+             aria-label="View previous project"
+           >
+             <i className="fas fa-chevron-left text-gray-600" aria-hidden="true"></i>
+           </button>
 
           <div className="flex items-center bg-white/70 backdrop-blur-md space-x-2 text-sm font-semibold text-gray-700 bg-gray-100 px-3 py-1 rounded-full">
             <span className="text-blue-500">{currentProjectIndex + 1}</span>
@@ -183,8 +186,9 @@ const ProjectShowcase = () => {
             onClick={nextProject} 
             className="flex items-center justify-center bg-white/50 backdrop-blur-md w-10 h-10 bg-gray-100 hover:bg-gray-200 rounded-full transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
             disabled={isTransitioning}
+            aria-label="View next project"
           >
-            <i className="fas fa-chevron-right text-gray-600"></i>
+            <i className="fas fa-chevron-right text-gray-600" aria-hidden="true"></i>
           </button>
         </div>
       </div>
@@ -245,7 +249,7 @@ const ProjectShowcase = () => {
                 <img
                   key={`project-${currentProject.id}-${currentProjectIndex}`}
                   src={currentProject.imageUrl}
-                  alt={`${currentProject.title} – preview`}
+                  alt={`${currentProject.title} - Project preview screenshot`}
                   className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 group-hover:scale-[1.03] ${isImageLoading ? 'opacity-0' : 'opacity-100'}`}
                   loading="lazy"
                   decoding="async"
@@ -294,8 +298,9 @@ const ProjectShowcase = () => {
              hover:bg-white/30 hover:text-blue-400 
              transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-md"
             disabled={isTransitioning}
+            aria-label="View previous project"
           >
-            <i className="fas fa-chevron-left text-lg"></i>
+            <i className="fas fa-chevron-left text-lg" aria-hidden="true"></i>
             <span className="font-medium">Previous</span>
           </button>
 
@@ -312,9 +317,10 @@ const ProjectShowcase = () => {
              hover:bg-white/30 hover:text-blue-400 
              transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-md"
             disabled={isTransitioning}
+            aria-label="View next project"
           >
             <span className="font-medium">Next</span>
-            <i className="fas fa-chevron-right text-lg"></i>
+            <i className="fas fa-chevron-right text-lg" aria-hidden="true"></i>
           </button>
         </div>
       </div>

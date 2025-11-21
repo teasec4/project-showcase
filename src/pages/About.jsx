@@ -85,7 +85,7 @@ const About = () => {
           
         <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">Maksim Kovalev</h1>
         <p className="text-xl text-white mb-6">Mobile Developer</p>
-        <div className="flex justify-center space-x-4">
+        <div className="flex flex-wrap justify-center gap-4">
           <a 
             href="mailto:kovalev_mk@tuta.io" 
             className="inline-flex items-center space-x-2 bg-blue-500 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-600 transition-all duration-200 shadow-sm hover:shadow-md"
@@ -101,6 +101,24 @@ const About = () => {
           >
             <i className="fab fa-github"></i>
             <span>GitHub</span>
+          </a>
+          <a 
+            href="https://www.linkedin.com/in/maksim-kovalev-a12b35378/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="inline-flex items-center space-x-2 bg-blue-700 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-800 transition-all duration-200 shadow-sm hover:shadow-md"
+          >
+            <i className="fab fa-linkedin"></i>
+            <span>LinkedIn</span>
+          </a>
+          <a 
+            href="https://t.me/teasec4" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="inline-flex items-center space-x-2 bg-sky-500 text-white px-6 py-3 rounded-lg font-medium hover:bg-sky-600 transition-all duration-200 shadow-sm hover:shadow-md"
+          >
+            <i className="fab fa-telegram"></i>
+            <span>Telegram</span>
           </a>
         </div>
       </div>

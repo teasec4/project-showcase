@@ -50,7 +50,11 @@ const Navbar = () => {
                 <i className="fab fa-linkedin text-gray-500"></i>
                 <span>LinkedIn</span>
               </a>
-            </div>
+              <a href="https://t.me/teasec4" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 px-3 py-2 rounded-lg transition-all duration-200">
+                <i className="fab fa-telegram text-gray-500"></i>
+                <span>Telegram</span>
+              </a>
+              </div>
             
             <button 
               onClick={handleDownloadResume} 
@@ -66,8 +70,11 @@ const Navbar = () => {
             <button
               onClick={toggleMenu}
               className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500 transition-all duration-200"
+              aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+              aria-expanded={isMenuOpen}
+              aria-controls="mobile-menu"
             >
-              <span className="sr-only">Open main menu</span>
+              <span className="sr-only">{isMenuOpen ? "Close menu" : "Open menu"}</span>
               {/* Hamburger icon */}
               <svg
                 className={`${isMenuOpen ? 'hidden' : 'block'} h-6 w-6`}
@@ -93,7 +100,7 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Navigation */}
-        <div className={`${isMenuOpen ? 'block' : 'hidden'} md:hidden pb-4 `}>
+        <div className={`${isMenuOpen ? 'block' : 'hidden'} md:hidden pb-4 `} id="mobile-menu" role="navigation" aria-label="Mobile navigation">
           <div className="space-y-2">
             <Link to="/about" className="flex items-center space-x-3 px-3 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-all duration-200">
               <i className="fas fa-user text-gray-500 w-5"></i>
@@ -111,7 +118,11 @@ const Navbar = () => {
               <i className="fab fa-linkedin text-gray-500 w-5"></i>
               <span>LinkedIn</span>
             </a>
-            <button 
+            <a href="https://t.me/teasec4" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 px-3 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-all duration-200">
+              <i className="fab fa-telegram text-gray-500 w-5"></i>
+              <span>Telegram</span>
+            </a>
+            <button
               onClick={handleDownloadResume} 
               className="w-full flex items-center justify-center space-x-2 bg-blue-500 text-white px-4 py-3 rounded-lg font-medium hover:bg-blue-600 transition-all duration-200 shadow-sm"
             >

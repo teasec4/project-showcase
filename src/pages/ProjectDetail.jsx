@@ -16,17 +16,18 @@ const ProjectDetail = () => {
   }
 
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       <div className="mb-6">
-        <Link to="/" className={`fixed top-20 left-4 md:left-4 lg:left-8 xl:left-16 z-40 
-              inline-flex items-center space-x-2 px-3 py-2 rounded-lg 
-              transition-all duration-300 shadow-sm hover:shadow-md 
-              bg-white/20 backdrop-blur-md text-white 
-              hover:bg-white/30`}>
-          <i className="fas fa-arrow-left mr-2"></i>
-          
-        </Link>
-      </div>
+         <Link to="/" className={`fixed top-20 left-4 md:left-4 lg:left-8 xl:left-16 z-40 
+               inline-flex items-center space-x-2 px-3 py-2 rounded-lg 
+               transition-all duration-300 shadow-sm hover:shadow-md 
+               bg-white/20 backdrop-blur-md text-white 
+               hover:bg-white/30`}
+           aria-label="Back to projects">
+           <i className="fas fa-arrow-left mr-2" aria-hidden="true"></i>
+           <span className="sr-only">Back</span>
+         </Link>
+       </div>
 
       <h1 className="text-3xl md:text-4xl font-semibold text-gray-900 tracking-tight mb-4">{project.title}</h1>
       <p className="text-white text-lg mb-8">{project.description}</p>
@@ -34,7 +35,7 @@ const ProjectDetail = () => {
       <div className="grid gap-6 md:gap-8">
         {/* Main image */}
         <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
-          <img src={project.imageUrl} alt={project.title} className="w-full h-[420px] md:h-[520px] object-cover" />
+          <img src={project.imageUrl} alt={`${project.title} - Main project showcase`} className="w-full h-[420px] md:h-[520px] object-cover" />
           <div className="p-4 border-t border-gray-100">
             <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center space-x-2 bg-gray-900 text-white px-5 py-3 rounded-lg font-medium hover:bg-black transition-all">
               <i className="fab fa-github"></i>
@@ -50,7 +51,7 @@ const ProjectDetail = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {project.galleryImages.map((src, idx) => (
                 <div key={idx} className="backdrop-blur-md  rounded-xl shadow-lg border border-gray-100 overflow-hidden group">
-                  <img src={src} alt={`${project.title} screenshot ${idx+1}`} className="w-full max-h-[700px] bg-gray-50 object-contain transition-transform duration-300 group-hover:scale-105" />
+                  <img src={src} alt={`${project.title} - Gallery screenshot ${idx+1} of ${project.galleryImages.length}`} className="w-full max-h-[700px] bg-gray-50 object-contain transition-transform duration-300 group-hover:scale-105" />
                 </div>
               ))}
             </div>

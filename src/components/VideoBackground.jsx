@@ -1,24 +1,28 @@
-import React, { useEffect, useState } from "react";
+import React, { useRef, useEffect } from "react";
 
 export default function VideoBackground() {
-  const [isLoaded, setIsLoaded] = useState(false);
+  const videoRef = useRef(null);
 
   useEffect(() => {
-    // Preload video for better performance
-    const video = new HTMLMediaElement();
-    video.src = `${import.meta.env.BASE_URL}videos/background.mp4`;
+    // Ensure video plays on load
+    if (videoRef.current) {
+      videoRef.current.play().catch((error) => {
+        // Autoplay was prevented, which is fine
+        console.log("Video autoplay prevented:", error);
+      });
+    }
   }, []);
 
   return (
     <div className="fixed top-0 left-0 w-full h-full -z-10 overflow-hidden">
       <video
+        ref={videoRef}
         autoPlay
         muted
         loop
         playsInline
-        preload="metadata"
+        preload="auto"
         className="w-full h-full object-cover"
-        onCanPlay={() => setIsLoaded(true)}
         title="Background video"
         aria-label="Animated background"
       >
@@ -28,9 +32,6 @@ export default function VideoBackground() {
         />
         Your browser does not support the video tag.
       </video>
-      {!isLoaded && (
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-purple-600" />
-      )}
     </div>
   );
 }
